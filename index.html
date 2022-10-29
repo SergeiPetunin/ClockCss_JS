@@ -34,6 +34,13 @@
                 <div id="seconds" style="--clr:#04fc43;">00</div>
                 <div id="ampm">AM</div>
             </div>
+
+            <!-- digital date -->
+            <div id="date">
+                <div id="days" style="--clr:#ff2972;">00</div>
+                <div id="months" style="--clr:#fee800;">00</div>
+                <div id="years" style="--clr:#04fc43;">0000</div>
+            </div>
         </div>
 
         <script>
@@ -50,6 +57,9 @@
                 hr.style.transform = `rotateZ(${hh+(mm/12)}deg)`;
                 mn.style.transform = `rotateZ(${mm}deg)`;
                 sc.style.transform = `rotateZ(${ss}deg)`;
+                //digital date
+
+                
 
                 //digital clock
                 let hours = document.getElementById('hours');
@@ -63,6 +73,16 @@
 
                 let am = h >= 12 ? "PM" : "AM";
 
+                //digital date
+                let days = document.getElementById('days');
+                let months = document.getElementById('months');
+                let years = document.getElementById('years');
+
+                let d = new Date().getDate();
+                let mo = new Date().getMonth()+1;
+                let y = new Date().getFullYear();
+
+                
                 // convert 24hr clock to 12hr clock
                 if (h > 12) {
                     h = h - 12;
@@ -73,10 +93,17 @@
                 m = (m < 10) ? "0" + m : m
                 s = (s < 10) ? "0" + s : s
 
+                d = (d < 10) ? "0" + d : d
+                mo = (mo < 10) ? "0" + mo : mo
+
                 hours.innerHTML = h;
                 minutes.innerHTML = m;
                 seconds.innerHTML = s;
                 ampm.innerHTML = am;
+
+                days.innerHTML = d;
+                months.innerHTML = mo;
+                years.innerHTML = y;
             })
 
             
